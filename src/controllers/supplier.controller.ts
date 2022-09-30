@@ -1,22 +1,22 @@
 import { Request, Response } from 'express'
-import { Category } from '../models/category.model'
+import { Supplier } from '../models'
 
-export const getCategory = async (req: Request, res: Response) => {
+export const getSupplier = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
-    const category = await Category.findOneBy({
-      category_id: Number(id),
+    const supplier = await Supplier.findOneBy({
+      supplier_id: Number(id),
     })
 
-    if (category) {
+    if (supplier) {
       return res.json({
         ok: true,
-        category,
+        supplier,
       })
     } else {
       return res.status(404).json({
         ok: false,
-        message: 'Category doesn\'t exists',
+        message: 'Supplier doesn\'t exists',
       })
     }
   } catch (error) {
@@ -29,13 +29,13 @@ export const getCategory = async (req: Request, res: Response) => {
   }
 }
 
-export const getAllCategories = async (req: Request, res: Response) => {
+export const getAllSuppliers = async (req: Request, res: Response) => {
 
   try {
-    const categories = await Category.find()
+    const suppliers = await Supplier.find()
     return res.json({
       ok: true,
-      categories,
+      suppliers,
     })
 
   } catch (error) {
@@ -46,22 +46,23 @@ export const getAllCategories = async (req: Request, res: Response) => {
       })
     }
   }
-
 }
 
-export const createCategory = async (req: Request, res: Response) => {
+export const createSupplier = async (req: Request, res: Response) => {
   try {
-    const { category_name, description } = req.body
+    const { name, address, phone, email } = req.body
 
-    const category = new Category()
-    category.category_name = category_name
-    category.description = description
+    const supplier = new Supplier()
+    supplier.name = name
+    supplier.address = address
+    supplier.phone = phone
+    supplier.email = email
 
-    await category.save()
+    await supplier.save()
 
     return res.status(201).json({
       ok: true,
-      message: category,
+      supplier,
     })
   } catch (error) {
     if (error instanceof Error) {
@@ -73,26 +74,29 @@ export const createCategory = async (req: Request, res: Response) => {
   }
 }
 
-export const updateCategory = async (req: Request, res: Response) => {
+export const updateSupplier = async (req: Request, res: Response) => {
   try {
-    const { category_name, description } = req.body
+    const { name, address, phone, email } = req.body
     const { id } = req.params
-    const category = await Category.findOneBy({
-      category_id: Number(id),
+    const supplier = await Supplier.findOneBy({
+      supplier_id: Number(id),
     })
 
-    if (category) {
-      category.category_name = category_name
-      category.description = description
-      await Category.save(category)
+    if (supplier) {
+      supplier.name = name
+      supplier.address = address
+      supplier.phone = phone
+      supplier.email = email
+
+      await supplier.save()
       return res.json({
         ok: true,
-        message: category,
+        supplier,
       })
     } else {
       return res.status(404).json({
         ok: false,
-        message: 'Category doesn\'t exists',
+        message: 'Supplier doesn\'t exists',
       })
     }
   } catch (error) {
@@ -105,23 +109,23 @@ export const updateCategory = async (req: Request, res: Response) => {
   }
 }
 
-export const deleteCategory = async (req: Request, res: Response) => {
+export const deleteSupplier = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
-    const category = await Category.findOneBy({
-      category_id: Number(id),
+    const supplier = await Supplier.findOneBy({
+      supplier_id: Number(id),
     })
 
-    if (category) {
-      await Category.remove(category)
+    if (supplier) {
+      await Supplier.remove(supplier)
       return res.json({
         ok: true,
-        message: category,
+        supplier,
       })
     } else {
       return res.status(404).json({
         ok: false,
-        message: 'Category doesn\'t exists',
+        message: 'Supplier doesn\'t exists',
       })
     }
   } catch (error) {

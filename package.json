@@ -1,0 +1,27 @@
+{
+  "name": "typeorm-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "repository": "git@github.com:JhonEduard26/typeorm-api.git",
+  "author": "Jhon Eduard Bocanegra <jhon.bocanegra26@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.7.23",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "pg": "^8.8.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.10"
+  }
+}

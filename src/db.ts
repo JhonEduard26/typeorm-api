@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm'
-import { Category, Supplier } from './models'
+import { Category, Product, Supplier } from './models'
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -10,7 +10,7 @@ export const AppDataSource = new DataSource({
   database: 'inventory',
   synchronize: true,
   logging: false,
-  entities: [Category, Supplier],
+  entities: [Category, Supplier, Product],
   subscribers: [],
   migrations: [],
 })

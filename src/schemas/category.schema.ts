@@ -16,6 +16,3 @@ export const updateCategorySchema = z.object({
   category_name: category_name.optional(),
   description: description.optional(),
 })
-
-export type getCategoryType = z.infer<typeof getCategorySchema>
-export type updateCategoryType = z.infer<typeof updateCategorySchema>

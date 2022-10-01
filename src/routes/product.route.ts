@@ -12,23 +12,23 @@ import { createProductSchema, updateProductSchema } from '../schemas/product.sch
 
 export const productRouter = Router()
 
-productRouter.get('/categories/:id', getProduct)
+productRouter.get('/products/:id', getProduct)
 
-productRouter.get('/categories', getAllProducts)
+productRouter.get('/products', getAllProducts)
 
 productRouter.post(
-  '/categories',
+  '/products',
   schemaValidator(createProductSchema, "body"),
   createProduct
 )
 
 productRouter.patch(
-  '/categories/:id',
+  '/products/:id',
   schemaValidator(updateProductSchema, "body"),
   updateProduct
 )
 
 productRouter.delete(
-  '/categories/:id',
+  '/products/:id',
   deleteProduct
 )

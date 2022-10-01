@@ -8,6 +8,7 @@ import {
   UpdateDateColumn
 } from 'typeorm';
 import { Category } from './category.model';
+import { Supplier } from './supplier.model';
 
 
 @Entity()
@@ -44,4 +45,7 @@ export class Product extends BaseEntity {
 
   @ManyToOne(() => Category, (category) => category.products)
   category: Category
+
+  @ManyToOne(() => Supplier, (supplier) => supplier.products)
+  supplier: Supplier
 }

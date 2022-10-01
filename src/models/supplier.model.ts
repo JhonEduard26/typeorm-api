@@ -3,9 +3,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from 'typeorm'
+import { Product } from './product.model'
 
 @Entity()
 export class Supplier extends BaseEntity {
@@ -32,4 +34,7 @@ export class Supplier extends BaseEntity {
 
   @UpdateDateColumn()
   updated_at: Date
+
+  @OneToMany(() => Product, (product) => product.supplier)
+  products: Product[]
 }

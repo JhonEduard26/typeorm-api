@@ -3,11 +3,12 @@ import { z } from 'zod'
 const product_name = z.string().min(2)
 const product_description = z.string().min(2)
 const product_unit = z.string().min(2)
-const product_price = z.number()
+const product_price = z.number().min(100)
 const product_quantity = z.number().min(1)
 const product_status = z.boolean()
 const other_details = z.string().min(2)
-const category = z.string().min(2)
+const category = z.number().positive()
+const supplier = z.number().positive()
 
 export const getProductSchema = z.object({
   id: z.number()
@@ -20,8 +21,9 @@ export const createProductSchema = z.object({
   product_price,
   product_quantity,
   product_status,
-  other_details,
+  other_details: other_details.optional(),
   category,
+  supplier
 })
 
 export const updateProductSchema = z.object({
@@ -33,4 +35,5 @@ export const updateProductSchema = z.object({
   product_status: product_status.optional(),
   other_details: other_details.optional(),
   category: category.optional(),
+  supplier: supplier.optional(),
 })

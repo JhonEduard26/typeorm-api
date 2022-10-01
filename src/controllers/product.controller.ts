@@ -58,7 +58,8 @@ export const createProduct = async (req: Request, res: Response) => {
       product_quantity,
       product_status,
       other_details,
-      category
+      category,
+      supplier
     } = req.body
 
     const product = new Product()
@@ -70,6 +71,7 @@ export const createProduct = async (req: Request, res: Response) => {
     product.product_status = product_status
     product.other_details = other_details
     product.category = category
+    product.supplier = supplier
 
     await product.save()
 
@@ -97,7 +99,8 @@ export const updateProduct = async (req: Request, res: Response) => {
       product_quantity,
       product_status,
       other_details,
-      category
+      category,
+      supplier
     } = req.body
     const { id } = req.params
     const product = await Product.findOneBy({
@@ -113,6 +116,8 @@ export const updateProduct = async (req: Request, res: Response) => {
       product.product_status = product_status
       product.other_details = other_details
       product.category = category
+      product.supplier = supplier
+
       await Product.save(product)
       return res.json({
         ok: true,

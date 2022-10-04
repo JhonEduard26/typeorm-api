@@ -23,7 +23,7 @@ export class Customer extends BaseEntity {
   @Column()
   phone: string
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, unique: true })
   email: string
 
   @CreateDateColumn()

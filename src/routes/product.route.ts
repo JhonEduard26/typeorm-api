@@ -10,25 +10,25 @@ import {
 import { schemaValidator } from '../middlewares/schemaValidator'
 import { createProductSchema, updateProductSchema } from '../schemas/product.schema'
 
-export const productRouter = Router()
+export const productRoute = Router()
 
-productRouter.get('/products/:id', getProduct)
+productRoute.get('/products/:id', getProduct)
 
-productRouter.get('/products', getAllProducts)
+productRoute.get('/products', getAllProducts)
 
-productRouter.post(
+productRoute.post(
   '/products',
   schemaValidator(createProductSchema, "body"),
   createProduct
 )
 
-productRouter.patch(
+productRoute.patch(
   '/products/:id',
   schemaValidator(updateProductSchema, "body"),
   updateProduct
 )
 
-productRouter.delete(
+productRoute.delete(
   '/products/:id',
   deleteProduct
 )

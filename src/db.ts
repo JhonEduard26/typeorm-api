@@ -14,12 +14,3 @@ export const AppDataSource = new DataSource({
   subscribers: [],
   migrations: [],
 })
-
-AppDataSource
-  .createQueryBuilder()
-  .insert()
-  .into(Role)
-  .values([{
-    role_name: "admin"
-  }])
-  .execute()

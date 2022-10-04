@@ -1,22 +1,22 @@
 import { Request, Response } from 'express'
-import { Supplier } from '../models'
+import { Customer } from '../models'
 
-export const getSupplier = async (req: Request, res: Response) => {
+export const getCustomer = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
-    const supplier = await Supplier.findOneBy({
+    const customer = await Customer.findOneBy({
       customer_id: Number(id),
     })
 
-    if (supplier) {
+    if (customer) {
       return res.json({
         ok: true,
-        supplier,
+        customer
       })
     } else {
       return res.status(404).json({
         ok: false,
-        message: 'Supplier doesn\'t exists',
+        message: 'Customer doesn\'t exists',
       })
     }
   } catch (error) {
@@ -29,13 +29,13 @@ export const getSupplier = async (req: Request, res: Response) => {
   }
 }
 
-export const getAllSuppliers = async (req: Request, res: Response) => {
+export const getAllCustomers = async (req: Request, res: Response) => {
 
   try {
-    const suppliers = await Supplier.find()
+    const customers = await Customer.find()
     return res.json({
       ok: true,
-      suppliers,
+      customers,
     })
 
   } catch (error) {
@@ -48,21 +48,21 @@ export const getAllSuppliers = async (req: Request, res: Response) => {
   }
 }
 
-export const createSupplier = async (req: Request, res: Response) => {
+export const createCustomer = async (req: Request, res: Response) => {
   try {
-    const { name, address, phone, email } = req.body
+    const { full_name, address, phone, email } = req.body
 
-    const supplier = new Supplier()
-    supplier.name = name
-    supplier.address = address
-    supplier.phone = phone
-    supplier.email = email
+    const customer = new Customer()
+    customer.full_name = full_name
+    customer.address = address
+    customer.phone = phone
+    customer.email = email
 
-    await supplier.save()
+    await customer.save()
 
     return res.status(201).json({
       ok: true,
-      supplier,
+      customer,
     })
   } catch (error) {
     if (error instanceof Error) {
@@ -74,29 +74,29 @@ export const createSupplier = async (req: Request, res: Response) => {
   }
 }
 
-export const updateSupplier = async (req: Request, res: Response) => {
+export const updateCustomer = async (req: Request, res: Response) => {
   try {
-    const { name, address, phone, email } = req.body
+    const { full_name, address, phone, email } = req.body
     const { id } = req.params
-    const supplier = await Supplier.findOneBy({
+    const customer = await Customer.findOneBy({
       customer_id: Number(id),
     })
 
-    if (supplier) {
-      supplier.name = name
-      supplier.address = address
-      supplier.phone = phone
-      supplier.email = email
+    if (customer) {
+      customer.full_name = full_name
+      customer.address = address
+      customer.phone = phone
+      customer.email = email
 
-      await supplier.save()
+      await customer.save()
       return res.json({
         ok: true,
-        supplier,
+        customer,
       })
     } else {
       return res.status(404).json({
         ok: false,
-        message: 'Supplier doesn\'t exists',
+        message: 'Customer doesn\'t exists',
       })
     }
   } catch (error) {
@@ -109,23 +109,23 @@ export const updateSupplier = async (req: Request, res: Response) => {
   }
 }
 
-export const deleteSupplier = async (req: Request, res: Response) => {
+export const deleteCustomer = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
-    const supplier = await Supplier.findOneBy({
+    const customer = await Customer.findOneBy({
       customer_id: Number(id),
     })
 
-    if (supplier) {
-      await Supplier.remove(supplier)
+    if (customer) {
+      await Customer.remove(customer)
       return res.json({
         ok: true,
-        supplier,
+        customer,
       })
     } else {
       return res.status(404).json({
         ok: false,
-        message: 'Supplier doesn\'t exists',
+        message: 'Customer doesn\'t exists',
       })
     }
   } catch (error) {

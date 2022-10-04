@@ -5,11 +5,9 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   BaseEntity,
-  OneToMany,
+  OneToMany
 } from 'typeorm'
 import { Customer } from './customer.model'
-
-export type RoleType = "admin" | "customer"
 
 @Entity()
 export class Role extends BaseEntity {
@@ -17,11 +15,10 @@ export class Role extends BaseEntity {
   role_id: number
 
   @Column({
-    type: "enum",
-    enum: ["admin", "customer"],
-    default: ["admin"]
+    nullable: false,
+    default: "admin"
   })
-  role_name: RoleType
+  role_name: string
 
   @CreateDateColumn()
   created_at: Date
@@ -31,4 +28,4 @@ export class Role extends BaseEntity {
 
   @OneToMany(() => Customer, (customer) => customer.role)
   customer: Customer[]
-} 
+}

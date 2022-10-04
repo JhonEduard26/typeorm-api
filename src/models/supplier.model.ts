@@ -12,7 +12,7 @@ import { Product } from './product.model'
 @Entity()
 export class Supplier extends BaseEntity {
   @PrimaryGeneratedColumn()
-  supplier_id: number
+  customer_id: number
 
   @Column()
   name: string

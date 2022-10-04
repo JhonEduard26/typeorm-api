@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm'
-import { Category, Product, Supplier } from './models'
+import { Category, Customer, Product, Role, Supplier } from './models'
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -10,7 +10,16 @@ export const AppDataSource = new DataSource({
   database: 'inventory',
   synchronize: true,
   logging: false,
-  entities: [Category, Supplier, Product],
+  entities: [Category, Supplier, Product, Role, Customer],
   subscribers: [],
   migrations: [],
 })
+
+AppDataSource
+  .createQueryBuilder()
+  .insert()
+  .into(Role)
+  .values([{
+    role_name: "admin"
+  }])
+  .execute()

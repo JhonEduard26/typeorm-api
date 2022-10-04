@@ -8,6 +8,7 @@ const main = async () => {
     const port = 3000
 
     await AppDataSource.initialize()
+
     console.log('Database connected!')
     app.listen(port, () => {
       console.log(`Listening on port ${port}`)

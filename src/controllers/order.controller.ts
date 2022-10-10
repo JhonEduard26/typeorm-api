@@ -4,8 +4,14 @@ import { Order } from '../models'
 export const getOrder = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
-    const order = await Order.findOneBy({
-      order_id: Number(id),
+
+    const order = await Order.find({
+      relations: {
+        customer: true,
+      },
+      where: {
+        order_id: Number(id),
+      }
     })
 
     if (order) {
@@ -48,10 +54,10 @@ export const getAllOrders = async (req: Request, res: Response) => {
 
 export const createOrder = async (req: Request, res: Response) => {
   try {
-    const { order_details, customer } = req.body
+    const { details, customer } = req.body
 
     const order = new Order()
-    order.order_details = order_details
+    order.details = details
     order.customer = customer
 
     await order.save()
@@ -72,14 +78,14 @@ export const createOrder = async (req: Request, res: Response) => {
 
 export const updateOrder = async (req: Request, res: Response) => {
   try {
-    const { order_details } = req.body
+    const { details } = req.body
     const { id } = req.params
     const order = await Order.findOneBy({
       order_id: Number(id),
     })
 
     if (order) {
-      order.order_details = order_details
+      order.details = details
 
       await Order.save(order)
       return res.json({

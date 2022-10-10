@@ -5,7 +5,8 @@ import {
   customerRoute,
   productRoute,
   supplierRoute,
-  orderRoute
+  orderRoute,
+  orderDetailRoute
 } from './routes'
 
 const app = express()
@@ -17,5 +18,6 @@ app.use(supplierRoute)
 app.use(productRoute)
 app.use(customerRoute)
 app.use(orderRoute)
+app.use(orderDetailRoute)
 
 export default app

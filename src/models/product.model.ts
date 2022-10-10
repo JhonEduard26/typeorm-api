@@ -4,10 +4,12 @@ import {
   CreateDateColumn,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from 'typeorm';
 import { Category } from './category.model';
+import { OrderDetail } from './orderdetail.model';
 import { Supplier } from './supplier.model';
 
 
@@ -48,4 +50,7 @@ export class Product extends BaseEntity {
 
   @ManyToOne(() => Supplier, (supplier) => supplier.products)
   supplier: Supplier
+
+  @OneToMany(() => OrderDetail, (orderdetail) => orderdetail.product)
+  orderdetail: OrderDetail[]
 }

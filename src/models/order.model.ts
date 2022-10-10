@@ -5,9 +5,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   BaseEntity,
-  ManyToOne
+  ManyToOne,
+  OneToMany
 } from 'typeorm'
 import { Customer } from './customer.model'
+import { OrderDetail } from './orderdetail.model'
 
 @Entity()
 export class Order extends BaseEntity {
@@ -15,7 +17,7 @@ export class Order extends BaseEntity {
   order_id: number
 
   @Column({ nullable: true })
-  order_details: string
+  details: string
 
   @CreateDateColumn()
   created_at: Date
@@ -25,4 +27,7 @@ export class Order extends BaseEntity {
 
   @ManyToOne(() => Customer, (customer) => customer.orders)
   customer: Customer
+
+  @OneToMany(() => OrderDetail, (orderdetail) => orderdetail.order)
+  orderdetail: OrderDetail[]
 } 

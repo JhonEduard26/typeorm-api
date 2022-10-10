@@ -1,6 +1,8 @@
 import { Request, Response } from 'express'
 import { Customer } from '../models'
 
+// TODO: Encriptar password
+
 export const getCustomer = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
@@ -50,13 +52,14 @@ export const getAllCustomers = async (req: Request, res: Response) => {
 
 export const createCustomer = async (req: Request, res: Response) => {
   try {
-    const { full_name, address, phone, email } = req.body
+    const { full_name, address, phone, email, password } = req.body
 
     const customer = new Customer()
     customer.full_name = full_name
     customer.address = address
     customer.phone = phone
     customer.email = email
+    customer.password = password
 
     await customer.save()
 
@@ -76,7 +79,7 @@ export const createCustomer = async (req: Request, res: Response) => {
 
 export const updateCustomer = async (req: Request, res: Response) => {
   try {
-    const { full_name, address, phone, email } = req.body
+    const { full_name, address, phone, email, password } = req.body
     const { id } = req.params
     const customer = await Customer.findOneBy({
       customer_id: Number(id),
@@ -87,6 +90,7 @@ export const updateCustomer = async (req: Request, res: Response) => {
       customer.address = address
       customer.phone = phone
       customer.email = email
+      customer.password = password
 
       await customer.save()
       return res.json({

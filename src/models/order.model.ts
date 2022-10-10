@@ -5,20 +5,17 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   BaseEntity,
-  OneToMany
+  ManyToOne
 } from 'typeorm'
 import { Customer } from './customer.model'
 
 @Entity()
-export class Role extends BaseEntity {
+export class Order extends BaseEntity {
   @PrimaryGeneratedColumn()
-  role_id: number
+  order_id: number
 
-  @Column({
-    nullable: false,
-    default: "admin"
-  })
-  role_name: string
+  @Column({ nullable: true })
+  order_details: string
 
   @CreateDateColumn()
   created_at: Date
@@ -26,6 +23,6 @@ export class Role extends BaseEntity {
   @UpdateDateColumn()
   updated_at: Date
 
-  @OneToMany(() => Customer, (customer) => customer.role)
-  customer: Customer[]
-}
+  @ManyToOne(() => Customer, (customer) => customer.orders)
+  customer: Customer
+} 

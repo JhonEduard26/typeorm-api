@@ -5,9 +5,9 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   BaseEntity,
-  ManyToOne
+  OneToMany,
 } from 'typeorm'
-import { Role } from './role.model'
+import { Order } from './order.model'
 
 @Entity()
 export class Customer extends BaseEntity {
@@ -26,12 +26,15 @@ export class Customer extends BaseEntity {
   @Column({ nullable: true, unique: true })
   email: string
 
+  @Column()
+  password: string
+
   @CreateDateColumn()
   created_at: Date
 
   @UpdateDateColumn()
   updated_at: Date
 
-  @ManyToOne(() => Role, (role) => role.customer)
-  role: Role
+  @OneToMany(() => Order, (order) => order.customer)
+  orders: Order[]
 } 

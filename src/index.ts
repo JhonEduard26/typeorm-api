@@ -1,16 +1,15 @@
 import 'reflect-metadata'
 import app from './app'
 import { AppDataSource } from './db'
+import { PORT } from './config'
 
 const main = async () => {
   try {
-    const port = 3000
-
     await AppDataSource.initialize()
 
     console.log('Database connected!')
-    app.listen(port, () => {
-      console.log(`Listening on port ${port}`)
+    app.listen(PORT, () => {
+      console.log(`Listening on port ${PORT}`)
     })
 
   } catch (error) {

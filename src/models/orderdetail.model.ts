@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   BaseEntity,
   ManyToOne,
+  BeforeInsert,
 
 } from 'typeorm'
 import { Order } from './order.model'
@@ -22,8 +23,13 @@ export class OrderDetail extends BaseEntity {
   @Column()
   quantity: number
 
-  @Column({ type: "double precision" })
+  @Column({ type: "double precision", default: 0 })
   total: number
+
+  @BeforeInsert()
+  calculateTotal() {
+    this.total = this.quantity * this.unit_price
+  }
 
   @CreateDateColumn()
   created_at: Date

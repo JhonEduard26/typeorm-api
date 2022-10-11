@@ -48,13 +48,12 @@ export const getAllOrderDetails = async (req: Request, res: Response) => {
 
 export const createOrderDetail = async (req: Request, res: Response) => {
   try {
-    const { unit_price, quantity, total, product, order } = req.body
+    const { unit_price, quantity, product, order } = req.body
 
     const orderdetail = new OrderDetail()
 
     orderdetail.unit_price = unit_price
     orderdetail.quantity = quantity
-    orderdetail.total = total
     orderdetail.product = product
     orderdetail.order = order
 
@@ -76,24 +75,18 @@ export const createOrderDetail = async (req: Request, res: Response) => {
 
 export const updateOrderDetail = async (req: Request, res: Response) => {
   try {
-    const { unit_price, quantity, total, product, order } = req.body
     const { id } = req.params
     const orderdetail = await OrderDetail.findOneBy({
       order_detail_id: Number(id),
     })
 
     if (orderdetail) {
-      orderdetail.unit_price = unit_price
-      orderdetail.quantity = quantity
-      orderdetail.total = total
-      orderdetail.product = product
-      orderdetail.order = order
 
-      await orderdetail.save()
+      await OrderDetail.update({ order_detail_id: Number(id) }, req.body)
 
       return res.json({
         ok: true,
-        orderdetail,
+        message: 'updated',
       })
     } else {
       return res.status(404).json({

@@ -78,19 +78,17 @@ export const createOrder = async (req: Request, res: Response) => {
 
 export const updateOrder = async (req: Request, res: Response) => {
   try {
-    const { details } = req.body
     const { id } = req.params
     const order = await Order.findOneBy({
       order_id: Number(id),
     })
 
     if (order) {
-      order.details = details
+      await Order.update({ order_id: Number(id) }, req.body)
 
-      await Order.save(order)
       return res.json({
         ok: true,
-        order,
+        message: 'updated',
       })
     } else {
       return res.status(404).json({
@@ -116,7 +114,6 @@ export const deleteOrder = async (req: Request, res: Response) => {
     })
 
     if (order) {
-
       await Order.remove(order)
 
       return res.json({

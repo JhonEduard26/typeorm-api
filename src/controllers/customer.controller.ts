@@ -79,23 +79,17 @@ export const createCustomer = async (req: Request, res: Response) => {
 
 export const updateCustomer = async (req: Request, res: Response) => {
   try {
-    const { full_name, address, phone, email, password } = req.body
     const { id } = req.params
     const customer = await Customer.findOneBy({
       customer_id: Number(id),
     })
 
     if (customer) {
-      customer.full_name = full_name
-      customer.address = address
-      customer.phone = phone
-      customer.email = email
-      customer.password = password
+      await Customer.update({ customer_id: Number(id) }, req.body)
 
-      await customer.save()
       return res.json({
         ok: true,
-        customer,
+        message: 'updated',
       })
     } else {
       return res.status(404).json({

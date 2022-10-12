@@ -7,7 +7,6 @@ import {
   BaseEntity,
   ManyToOne,
   BeforeInsert,
-
 } from 'typeorm'
 import { Order } from './order.model'
 import { Product } from './product.model'

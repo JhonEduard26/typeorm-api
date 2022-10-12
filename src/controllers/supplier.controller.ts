@@ -5,7 +5,7 @@ export const getSupplier = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const supplier = await Supplier.findOneBy({
-      customer_id: Number(id),
+      supplier_id: Number(id),
     })
 
     if (supplier) {
@@ -76,22 +76,19 @@ export const createSupplier = async (req: Request, res: Response) => {
 
 export const updateSupplier = async (req: Request, res: Response) => {
   try {
-    const { name, address, phone, email } = req.body
+    // const { name, address, phone, email } = req.body
     const { id } = req.params
     const supplier = await Supplier.findOneBy({
-      customer_id: Number(id),
+      supplier_id: Number(id),
     })
 
     if (supplier) {
-      supplier.name = name
-      supplier.address = address
-      supplier.phone = phone
-      supplier.email = email
 
-      await supplier.save()
+      await Supplier.update({ supplier_id: Number(id) }, req.body)
+
       return res.json({
         ok: true,
-        supplier,
+        message: 'updated',
       })
     } else {
       return res.status(404).json({
@@ -113,7 +110,7 @@ export const deleteSupplier = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const supplier = await Supplier.findOneBy({
-      customer_id: Number(id),
+      supplier_id: Number(id),
     })
 
     if (supplier) {

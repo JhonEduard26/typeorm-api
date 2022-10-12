@@ -75,19 +75,16 @@ export const createCategory = async (req: Request, res: Response) => {
 
 export const updateCategory = async (req: Request, res: Response) => {
   try {
-    const { category_name, description } = req.body
     const { id } = req.params
     const category = await Category.findOneBy({
       category_id: Number(id),
     })
 
     if (category) {
-      category.category_name = category_name
-      category.description = description
-      await Category.save(category)
+      await Category.update({ category_id: Number(id) }, req.body)
       return res.json({
         ok: true,
-        message: category,
+        message: 'updated',
       })
     } else {
       return res.status(404).json({
@@ -116,7 +113,7 @@ export const deleteCategory = async (req: Request, res: Response) => {
       await Category.remove(category)
       return res.json({
         ok: true,
-        message: category,
+        category,
       })
     } else {
       return res.status(404).json({

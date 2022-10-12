@@ -91,37 +91,17 @@ export const createProduct = async (req: Request, res: Response) => {
 
 export const updateProduct = async (req: Request, res: Response) => {
   try {
-    const {
-      product_name,
-      product_description,
-      product_unit,
-      product_price,
-      product_quantity,
-      product_status,
-      other_details,
-      category,
-      supplier
-    } = req.body
     const { id } = req.params
     const product = await Product.findOneBy({
       product_id: Number(id),
     })
 
     if (product) {
-      product.product_name = product_name
-      product.product_description = product_description
-      product.product_unit = product_unit
-      product.product_price = product_price
-      product.product_quantity = product_quantity
-      product.product_status = product_status
-      product.other_details = other_details
-      product.category = category
-      product.supplier = supplier
+      await Product.update({ product_id: Number(id) }, req.body)
 
-      await Product.save(product)
       return res.json({
         ok: true,
-        product,
+        message: 'updated',
       })
     } else {
       return res.status(404).json({

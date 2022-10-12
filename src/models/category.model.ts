@@ -14,7 +14,7 @@ export class Category extends BaseEntity {
   @PrimaryGeneratedColumn()
   category_id: number
 
-  @Column()
+  @Column({ unique: true })
   category_name: string
 
   @Column()

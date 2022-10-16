@@ -23,12 +23,6 @@ export class Customer extends BaseEntity {
   @Column()
   phone: string
 
-  @Column({ nullable: true, unique: true })
-  email: string
-
-  @Column()
-  password: string
-
   @CreateDateColumn()
   created_at: Date
 

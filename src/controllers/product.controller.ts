@@ -52,26 +52,22 @@ export const createProduct = async (req: Request, res: Response) => {
   try {
     const {
       product_name,
-      product_description,
-      product_unit,
+      bar_code,
       product_price,
-      product_quantity,
-      product_status,
+      stock_quantity,
+      status,
       other_details,
       category,
-      supplier
     } = req.body
 
     const product = new Product()
     product.product_name = product_name
-    product.product_description = product_description
-    product.product_unit = product_unit
+    product.bar_code = bar_code
     product.product_price = product_price
-    product.product_quantity = product_quantity
-    product.product_status = product_status
+    product.stock_quantity = stock_quantity
+    product.status = status
     product.other_details = other_details
     product.category = category
-    product.supplier = supplier
 
     await product.save()
 

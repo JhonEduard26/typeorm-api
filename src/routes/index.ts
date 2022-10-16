@@ -1,6 +1,5 @@
 export * from './category.route'
 export * from './product.route'
-export * from './supplier.route'
 export * from './customer.route'
 export * from './order.route'
 export * from './orderdetail.route'

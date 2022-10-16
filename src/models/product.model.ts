@@ -10,7 +10,6 @@ import {
 } from 'typeorm';
 import { Category } from './category.model';
 import { OrderDetail } from './orderdetail.model';
-import { Supplier } from './supplier.model';
 
 
 @Entity()
@@ -22,19 +21,16 @@ export class Product extends BaseEntity {
   product_name: string
 
   @Column()
-  product_description: string
-
-  @Column()
-  product_unit: string
+  bar_code: string
 
   @Column("double precision")
   product_price: number
 
   @Column()
-  product_quantity: number
+  stock_quantity: number
 
   @Column()
-  product_status: boolean
+  status: boolean
 
   @Column({ nullable: true })
   other_details: string
@@ -47,9 +43,6 @@ export class Product extends BaseEntity {
 
   @ManyToOne(() => Category, (category) => category.products)
   category: Category
-
-  @ManyToOne(() => Supplier, (supplier) => supplier.products)
-  supplier: Supplier
 
   @OneToMany(() => OrderDetail, (orderdetail) => orderdetail.product)
   orderdetail: OrderDetail[]

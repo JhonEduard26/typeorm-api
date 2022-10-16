@@ -4,7 +4,6 @@ import {
   categoryRoute,
   customerRoute,
   productRoute,
-  supplierRoute,
   orderRoute,
   orderDetailRoute
 } from './routes'
@@ -14,7 +13,6 @@ app.use(cors())
 app.use(express.json())
 
 app.use(categoryRoute)
-app.use(supplierRoute)
 app.use(productRoute)
 app.use(customerRoute)
 app.use(orderRoute)

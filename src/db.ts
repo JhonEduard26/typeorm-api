@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm'
-import { Category, Customer, Product, Supplier, Order, OrderDetail } from './models'
+import { Category, Customer, Product, Order, OrderDetail } from './models'
 import {
   DB_DATABASE,
   DB_USER,
@@ -17,7 +17,7 @@ export const AppDataSource = new DataSource({
   database: DB_DATABASE,
   synchronize: true,
   logging: false,
-  entities: [Category, Supplier, Product, Customer, Order, OrderDetail],
+  entities: [Category, Product, Customer, Order, OrderDetail],
   subscribers: [],
   migrations: [],
 })

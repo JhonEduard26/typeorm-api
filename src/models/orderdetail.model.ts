@@ -16,9 +16,6 @@ export class OrderDetail extends BaseEntity {
   @PrimaryGeneratedColumn()
   order_detail_id: number
 
-  @Column({ type: "double precision" })
-  unit_price: number
-
   @Column()
   quantity: number
 
@@ -27,7 +24,7 @@ export class OrderDetail extends BaseEntity {
 
   @BeforeInsert()
   calculateTotal() {
-    this.total = this.quantity * this.unit_price
+    this.total = this.quantity * this.product.product_price
   }
 
   @CreateDateColumn()

@@ -48,11 +48,10 @@ export const getAllOrderDetails = async (req: Request, res: Response) => {
 
 export const createOrderDetail = async (req: Request, res: Response) => {
   try {
-    const { unit_price, quantity, product, order } = req.body
+    const { quantity, product, order } = req.body
 
     const orderdetail = new OrderDetail()
 
-    orderdetail.unit_price = unit_price
     orderdetail.quantity = quantity
     orderdetail.product = product
     orderdetail.order = order

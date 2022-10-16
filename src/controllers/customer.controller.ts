@@ -58,8 +58,6 @@ export const createCustomer = async (req: Request, res: Response) => {
     customer.full_name = full_name
     customer.address = address
     customer.phone = phone
-    customer.email = email
-    customer.password = password
 
     await customer.save()
 

@@ -23,8 +23,17 @@ export class OrderDetail extends BaseEntity {
   total: number
 
   @BeforeInsert()
-  calculateTotal() {
-    this.total = this.quantity * this.product.product_price
+  async calculateTotal() {
+    const value = await Product.findOne(
+      {
+        where: {
+          product_id: Number(this.product)
+        }
+      }
+    )
+    if (value) {
+      this.total = this.quantity * value?.product_price
+    }
   }
 
   @CreateDateColumn()
@@ -33,7 +42,7 @@ export class OrderDetail extends BaseEntity {
   @UpdateDateColumn()
   updated_at: Date
 
-  @ManyToOne(() => Product, (product) => product)
+  @ManyToOne(() => Product, (product) => product.orderdetail)
   product: Product
 
   @ManyToOne(() => Order, (order) => order.orderdetail)

@@ -17,9 +17,6 @@ export class Category extends BaseEntity {
   @Column({ unique: true })
   category_name: string
 
-  @Column()
-  description: string
-
   @CreateDateColumn()
   created_at: Date
 

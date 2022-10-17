@@ -52,7 +52,7 @@ export const getAllCustomers = async (req: Request, res: Response) => {
 
 export const createCustomer = async (req: Request, res: Response) => {
   try {
-    const { full_name, address, phone, email, password } = req.body
+    const { full_name, address, phone } = req.body
 
     const customer = new Customer()
     customer.full_name = full_name

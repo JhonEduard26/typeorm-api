@@ -1,6 +1,5 @@
 import { DataSource } from 'typeorm'
 import {
-  Admin,
   Category,
   Customer,
   Order,
@@ -25,7 +24,6 @@ export const AppDataSource = new DataSource({
   synchronize: true,
   logging: false,
   entities: [
-    Admin,
     Category,
     Customer,
     Order,

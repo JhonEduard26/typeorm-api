@@ -51,10 +51,11 @@ export const getAllCategories = async (req: Request, res: Response) => {
 
 export const createCategory = async (req: Request, res: Response) => {
   try {
-    const { category_name } = req.body
+    const { category_name, image_url } = req.body
 
     const category = new Category()
     category.category_name = category_name
+    category.image_url = image_url
 
     await category.save()
 

@@ -1,4 +1,3 @@
-export * from './admin.model'
 export * from './category.model'
 export * from './customer.model'
 export * from './order.model'

@@ -1,14 +1,14 @@
 -- ALTER SEQUENCE category_category_id_seq RESTART WITH 1;
 
 -- * Category
--- INSERT INTO public.category(category_name) VALUES ('Frutas y verduras');
--- INSERT INTO public.category(category_name) VALUES ('Pastelería');
--- INSERT INTO public.category(category_name) VALUES ('Carnes y pescados');
--- INSERT INTO public.category(category_name) VALUES ('Lácteos y huevos');
--- INSERT INTO public.category(category_name) VALUES ('Bebidas');
--- INSERT INTO public.category(category_name) VALUES ('Licores');
--- INSERT INTO public.category(category_name) VALUES ('Cuidado personal');
--- INSERT INTO public.category(category_name) VALUES ('Despensa');
+-- INSERT INTO public.category(category_name, image_url) VALUES ('Frutas y verduras', 'https://res.cloudinary.com/dmwa2i3mk/image/upload/v1666482005/categories/fruits_fwjl4x.jpg');
+-- INSERT INTO public.category(category_name, image_url) VALUES ('Pastelería', 'https://res.cloudinary.com/dmwa2i3mk/image/upload/v1666482018/categories/bakery_czpoga.jpg');
+-- INSERT INTO public.category(category_name, image_url) VALUES ('Carnes y pescados', 'https://res.cloudinary.com/dmwa2i3mk/image/upload/v1666482028/categories/chicken_zcwj5g.jpg');
+-- INSERT INTO public.category(category_name, image_url) VALUES ('Lácteos y huevos', 'https://res.cloudinary.com/dmwa2i3mk/image/upload/v1666482028/categories/eggs_dnf0as.jpg');
+-- INSERT INTO public.category(category_name, image_url) VALUES ('Bebidas', 'https://res.cloudinary.com/dmwa2i3mk/image/upload/v1666482017/categories/softdrinks_orouom.jpg');
+-- INSERT INTO public.category(category_name, image_url) VALUES ('Licores', 'https://res.cloudinary.com/dmwa2i3mk/image/upload/v1666482018/categories/alcohol_rg1lgq.jpg');
+-- INSERT INTO public.category(category_name, image_url) VALUES ('Cuidado personal', 'https://res.cloudinary.com/dmwa2i3mk/image/upload/v1666482024/categories/personal-care_gzn8kc.jpg');
+-- INSERT INTO public.category(category_name, image_url) VALUES ('Despensa', 'https://res.cloudinary.com/dmwa2i3mk/image/upload/v1666482022/categories/despensa_caaaxc.jpg');
 
 -- -- * Product
 -- INSERT INTO public.product(product_name, bar_code, product_price, stock_quantity, status, "categoryCategoryId") VALUES ('Guayaba Feijoa', '7029 A42 23', 500, 300, true, 1);

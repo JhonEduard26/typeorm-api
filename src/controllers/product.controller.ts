@@ -5,7 +5,7 @@ export const getProduct = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const product = await Product.findOneBy({
-      product_id: Number(id),
+      id: Number(id),
     })
 
     if (product) {
@@ -89,11 +89,11 @@ export const updateProduct = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const product = await Product.findOneBy({
-      product_id: Number(id),
+      id: Number(id),
     })
 
     if (product) {
-      await Product.update({ product_id: Number(id) }, req.body)
+      await Product.update({ id: Number(id) }, req.body)
 
       return res.json({
         ok: true,
@@ -119,7 +119,7 @@ export const deleteProduct = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const product = await Product.findOneBy({
-      product_id: Number(id),
+      id: Number(id),
     })
 
     if (product) {

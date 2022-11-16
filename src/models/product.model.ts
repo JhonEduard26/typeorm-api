@@ -15,7 +15,7 @@ import { OrderDetail } from './orderdetail.model';
 @Entity()
 export class Product extends BaseEntity {
   @PrimaryGeneratedColumn()
-  product_id: number
+  id: number
 
   @Column()
   product_name: string

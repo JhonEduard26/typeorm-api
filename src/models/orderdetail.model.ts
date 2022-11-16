@@ -27,7 +27,7 @@ export class OrderDetail extends BaseEntity {
     const value = await Product.findOne(
       {
         where: {
-          product_id: Number(this.product)
+          id: Number(this.product)
         }
       }
     )

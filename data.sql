@@ -10,7 +10,7 @@
 -- INSERT INTO public.category(category_name, image_url) VALUES ('Cuidado personal', 'https://res.cloudinary.com/dmwa2i3mk/image/upload/v1666482024/categories/personal-care_gzn8kc.jpg');
 -- INSERT INTO public.category(category_name, image_url) VALUES ('Despensa', 'https://res.cloudinary.com/dmwa2i3mk/image/upload/v1666482022/categories/despensa_caaaxc.jpg');
 
--- -- * Product
+-- * Product
 -- INSERT INTO public.product(product_name, bar_code, product_price, stock_quantity, status, "categoryCategoryId") VALUES ('Guayaba Feijoa', '7029 A42 23', 500, 300, true, 1);
 -- INSERT INTO public.product(product_name, bar_code, product_price, stock_quantity, status, "categoryCategoryId") VALUES ('Mango', '0316 R56 01', 2100, 250, true, 1);
 -- INSERT INTO public.product(product_name, bar_code, product_price, stock_quantity, status, "categoryCategoryId") VALUES ('Manzana', '7923 T23 19', 700, 130, true, 1);

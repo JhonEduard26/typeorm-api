@@ -12,7 +12,7 @@ import { Order } from './order.model'
 @Entity()
 export class Customer extends BaseEntity {
   @PrimaryGeneratedColumn()
-  customer_id: number
+  id: number
 
   @Column()
   full_name: string

@@ -1,13 +1,11 @@
 import { Request, Response } from 'express'
 import { Customer } from '../models'
 
-// TODO: Encriptar password
-
 export const getCustomer = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const customer = await Customer.findOneBy({
-      customer_id: Number(id),
+      id: Number(id),
     })
 
     if (customer) {
@@ -79,11 +77,11 @@ export const updateCustomer = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const customer = await Customer.findOneBy({
-      customer_id: Number(id),
+      id: Number(id),
     })
 
     if (customer) {
-      await Customer.update({ customer_id: Number(id) }, req.body)
+      await Customer.update({ id: Number(id) }, req.body)
 
       return res.json({
         ok: true,
@@ -109,7 +107,7 @@ export const deleteCustomer = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const customer = await Customer.findOneBy({
-      customer_id: Number(id),
+      id: Number(id),
     })
 
     if (customer) {

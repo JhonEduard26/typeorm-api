@@ -33,6 +33,9 @@ export class Product extends BaseEntity {
   status: boolean
 
   @Column({ nullable: true })
+  image_url: string
+
+  @Column({ nullable: true })
   other_details: string
 
   @CreateDateColumn()

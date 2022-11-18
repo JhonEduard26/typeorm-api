@@ -56,6 +56,7 @@ export const createProduct = async (req: Request, res: Response) => {
       product_price,
       stock_quantity,
       status,
+      image_url,
       other_details,
       category,
     } = req.body
@@ -66,6 +67,7 @@ export const createProduct = async (req: Request, res: Response) => {
     product.product_price = product_price
     product.stock_quantity = stock_quantity
     product.status = status
+    product.image_url = image_url
     product.other_details = other_details
     product.category = category
 

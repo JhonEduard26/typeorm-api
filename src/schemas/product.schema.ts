@@ -5,7 +5,8 @@ const bar_code = z.string().min(7)
 const product_price = z.number().min(100)
 const stock_quantity = z.number().positive()
 const status = z.boolean()
-const other_details = z.string().min(2)
+const image_url = z.string().min(5).optional()
+const other_details = z.string().min(2).optional()
 const category = z.number().positive()
 
 export const getProductSchema = z.object({
@@ -18,7 +19,8 @@ export const createProductSchema = z.object({
   product_price,
   stock_quantity,
   status,
-  other_details: other_details.optional(),
+  image_url,
+  other_details,
   category,
 })
 
@@ -28,6 +30,7 @@ export const updateProductSchema = z.object({
   product_price: product_price.optional(),
   stock_quantity: stock_quantity.optional(),
   status: status.optional(),
-  other_details: other_details.optional(),
+  image_url,
+  other_details,
   category: category.optional(),
 })

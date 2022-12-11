@@ -5,7 +5,7 @@ export const getOrderDetail = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const orderdetail = await OrderDetail.findOneBy({
-      order_detail_id: Number(id),
+      id: Number(id),
     })
 
     if (orderdetail) {
@@ -31,7 +31,12 @@ export const getOrderDetail = async (req: Request, res: Response) => {
 
 export const getAllOrderDetails = async (req: Request, res: Response) => {
   try {
-    const orderdetails = await OrderDetail.find()
+    const orderdetails = await OrderDetail.find({
+      relations: {
+        product: true,
+        order: true,
+      }
+    })
     return res.json({
       ok: true,
       orderdetails,
@@ -76,12 +81,12 @@ export const updateOrderDetail = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const orderdetail = await OrderDetail.findOneBy({
-      order_detail_id: Number(id),
+      id: Number(id),
     })
 
     if (orderdetail) {
 
-      await OrderDetail.update({ order_detail_id: Number(id) }, req.body)
+      await OrderDetail.update({ id: Number(id) }, req.body)
 
       return res.json({
         ok: true,

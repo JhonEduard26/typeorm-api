@@ -10,7 +10,7 @@ export const getOrder = async (req: Request, res: Response) => {
         customer: true,
       },
       where: {
-        order_id: Number(id),
+        id: Number(id),
       }
     })
 
@@ -80,11 +80,11 @@ export const updateOrder = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const order = await Order.findOneBy({
-      order_id: Number(id),
+      id: Number(id),
     })
 
     if (order) {
-      await Order.update({ order_id: Number(id) }, req.body)
+      await Order.update({ id: Number(id) }, req.body)
 
       return res.json({
         ok: true,
@@ -110,7 +110,7 @@ export const deleteOrder = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const order = await Order.findOneBy({
-      order_id: Number(id),
+      id: Number(id),
     })
 
     if (order) {

@@ -14,7 +14,7 @@ import { OrderDetail } from './orderdetail.model'
 @Entity()
 export class Order extends BaseEntity {
   @PrimaryGeneratedColumn()
-  order_id: number
+  id: number
 
   @Column({ nullable: true })
   details: string

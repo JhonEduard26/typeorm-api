@@ -1,6 +1,5 @@
 import { z } from 'zod'
 
-//  todo: probar numeros decimales
 const quantity = z.number().positive()
 const product = z.number().positive()
 const order = z.number().positive()
